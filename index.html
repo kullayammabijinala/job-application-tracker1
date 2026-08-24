@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💼 Job Application Tracker</h1>
+            <p>Track and manage your career opportunities efficiently.</p>
+        </header>
+
+        <!-- Dashboard Counters -->
+        <section class="dashboard">
+            <div class="card applied">
+                <h3>Applied</h3>
+                <p id="count-applied">0</p>
+            </div>
+            <div class="card interview">
+                <h3>Interview</h3>
+                <p id="count-interview">0</p>
+            </div>
+            <div class="card selected">
+                <h3>Selected</h3>
+                <p id="count-selected">0</p>
+            </div>
+            <div class="card rejected">
+                <h3>Rejected</h3>
+                <p id="count-rejected">0</p>
+            </div>
+        </section>
+
+        <!-- Controls: Search, Filter, Sort -->
+        <section class="controls">
+            <input type="text" id="search-input" placeholder="Search by Company or Role...">
+            <select id="filter-status">
+                <option value="ALL">All Statuses</option>
+                <option value="Applied">Applied</option>
+                <option value="Interview">Interview</option>
+                <option value="Selected">Selected</option>
+                <option value="Rejected">Rejected</option>
+            </select>
+            <select id="sort-date">
+                <option value="DESC">Newest First</option>
+                <option value="ASC">Oldest First</option>
+            </select>
+        </section>
+
+        <!-- Main Applications Table -->
+        <section class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Role</th>
+                        <th>Location</th>
+                        <th>Salary</th>
+                        <th>Status</th>
+                        <th>ATS Score</th>
+                        <th>Date Applied</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="job-table-body">
+                    <!-- Dynamic Data Injected via JavaScript -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Add Job Form -->
+        <section class="form-container">
+            <h2>Add Application</h2>
+            <form id="job-form">
+                <div class="form-group">
+                    <label>Company</label>
+                    <input type="text" id="company" required placeholder="e.g., TCS">
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <input type="text" id="role" required placeholder="e.g., Java Developer">
+                </div>
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" id="location" required placeholder="e.g., Remote / Hyderabad">
+                </div>
+                <div class="form-group">
+                    <label>Salary</label>
+                    <input type="text" id="salary" placeholder="e.g., 8 LPA">
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="status">
+                        <option value="Applied">Applied</option>
+                        <option value="Interview">Interview</option>
+                        <option value="Selected">Selected</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Upload Resume (PDF, DOCX, TXT)</label>
+                    <input type="file" id="resume" accept=".pdf,.docx,.doc,.txt">
+                </div>
+                <button type="submit" class="btn-submit">ADD APPLICATION</button>
+            </form>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

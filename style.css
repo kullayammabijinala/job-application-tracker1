@@ -1,0 +1,367 @@
+:root {
+    /* Color Palette */
+    --bg-main: #f8fafc;
+    --card-bg: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --border-color: #e2e8f0;
+    --border-focus: #6366f1;
+    
+    /* Primary Accent */
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    
+    /* Status Colors */
+    --applied-color: #3b82f6;
+    --applied-bg: #eff6ff;
+    
+    --interview-color: #d97706;
+    --interview-bg: #fffbe2;
+    
+    --selected-color: #059669;
+    --selected-bg: #ecfdf5;
+    
+    --rejected-color: #dc2626;
+    --rejected-bg: #fef2f2;
+
+    /* Shadows & Transitions */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    padding: 3rem 1.5rem;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Header Section */
+header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+header h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--text-primary);
+}
+
+header p {
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+/* Dashboard Metrics */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: left;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+}
+
+.card.applied::before { background-color: var(--applied-color); }
+.card.interview::before { background-color: var(--interview-color); }
+.card.selected::before { background-color: var(--selected-color); }
+.card.rejected::before { background-color: var(--rejected-color); }
+
+.card h3 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.card p {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-top: 0.35rem;
+}
+
+/* Search, Filter, Sort Controls */
+.controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.controls input, 
+.controls select {
+    padding: 0.65rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    outline: none;
+    transition: var(--transition);
+}
+
+.controls input {
+    flex: 2;
+    min-width: 220px;
+}
+
+.controls select {
+    flex: 1;
+    min-width: 160px;
+    cursor: pointer;
+}
+
+.controls input:focus, 
+.controls select:focus {
+    border-color: var(--border-focus);
+    background-color: var(--card-bg);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+/* Data Table */
+.table-container {
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th {
+    background-color: #f1f5f9;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+td {
+    padding: 1rem 1.25rem;
+    font-size: 0.925rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+    vertical-align: middle;
+}
+
+tbody tr {
+    transition: var(--transition);
+}
+
+tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Status Dropdowns in Table */
+.status-select {
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.825rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+    cursor: pointer;
+    outline: none;
+    transition: var(--transition);
+}
+
+/* Status Option Highlights */
+.status-select option {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+}
+
+/* Interactive Status Pill Color Variants */
+.status-select[value="Applied"],
+select.status-select:has(option[value="Applied"]:checked) {
+    background-color: var(--applied-bg);
+    color: var(--applied-color);
+    border-color: rgba(59, 130, 246, 0.2);
+}
+
+.status-select[value="Interview"],
+select.status-select:has(option[value="Interview"]:checked) {
+    background-color: var(--interview-bg);
+    color: var(--interview-color);
+    border-color: rgba(217, 119, 6, 0.2);
+}
+
+.status-select[value="Selected"],
+select.status-select:has(option[value="Selected"]:checked) {
+    background-color: var(--selected-bg);
+    color: var(--selected-color);
+    border-color: rgba(5, 150, 105, 0.2);
+}
+
+.status-select[value="Rejected"],
+select.status-select:has(option[value="Rejected"]:checked) {
+    background-color: var(--rejected-bg);
+    color: var(--rejected-color);
+    border-color: rgba(220, 38, 38, 0.2);
+}
+
+/* Delete Action Button */
+.btn-delete {
+    background-color: transparent;
+    color: #ef4444;
+    border: 1px solid #fee2e2;
+    padding: 0.4rem 0.85rem;
+    border-radius: 6px;
+    font-size: 0.825rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-delete:hover {
+    background-color: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
+}
+
+/* Add Application Form Card */
+.form-container {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.form-container h2 {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+#job-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    align-items: flex-end;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.825rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.form-group input, 
+.form-group select {
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    outline: none;
+    transition: var(--transition);
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+    border-color: var(--border-focus);
+    background-color: var(--card-bg);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.btn-submit {
+    grid-column: 1 / -1;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.85rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+}
+
+.btn-submit:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(79, 70, 229, 0.3);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+/* Empty State Styling */
+#job-table-body td[colspan="7"] {
+    padding: 3rem 1rem;
+    font-style: italic;
+}
